@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DramKit</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .container {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: rgb(160, 35, 35);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px
+        }
+        
+        .dram_tool {
+            height: 50px;
+            width: 50px;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-family: sans-serif;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dram_tool" data-key="65">
+            A
+            <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Harsh%20FM%20Cymbals/385[kb]FM_Cymbal_%20004.wav.mp3"></audio>
+        </div>
+        <div class="dram_tool" data-key="66">
+            B
+            <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Punches%20Hits%20Discoblasts/29[kb]pumpuphit.wav.mp3"></audio>
+        </div>
+        <div class="dram_tool" data-key="67">
+            C
+            <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Punches%20Hits%20Discoblasts/35[kb]kickcrash.wav.mp3"></audio>
+        </div>
+        <div class="dram_tool" data-key="68">
+            D
+            <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Harsh%20FM%20Cymbals/385[kb]FM_Cymbal_%20004.wav.mp3"></audio>
+        </div>
+        <div class="dram_tool" data-key="69">
+            E
+            <audio src="https://sampleswap.org/samples-ghost/DRUMS%20(SINGLE%20HITS)/Hats/92[kb]bigopenhh.wav.mp3"></audio>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.dram_tool').forEach(ele => {
+
+            ele.addEventListener('click', () => {
+                ele.children[0].play()
+                ele.children[0].currentTime = 0
+            })
+        })
+
+        window.addEventListener('keyup', (e) => {
+            // console.log(e.keyCode)
+            document.querySelectorAll('.dram_tool').forEach(ele => {
+
+                if (Number(ele.getAttribute('data-key')) == e.keyCode) {
+                    ele.children[0].play()
+                    ele.children[0].currentTime = 0
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
